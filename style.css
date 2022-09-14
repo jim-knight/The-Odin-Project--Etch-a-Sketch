@@ -13,21 +13,30 @@ body {
 	height: 100vh;
 }
 #sketch-container {
+	height: 500px;
+	width: 500px;
+
 	display: grid;
-	grid-gap: 0.1em;
+	grid-gap: 0;
 	grid-template-rows: repeat(var(--grid-rows), 1fr);
 	grid-template-columns: repeat(var(--grid-cols), 1fr);
 	margin-top: 50px;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 #sketch-container .pixel {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	min-height: 2px;
-	min-width: 2px;
-	padding: 0.5em;
-	border: 1px solid rgba(0, 0, 0, 0.05);
+	/* border: 1px solid rgba(0, 0, 0, 0.05); */
 }
 #sketch-container .pixel.pressed {
-	background: rgba(0, 0, 0, 0.5);
+	animation: pressed 1s linear 1;
+}
+@keyframes pressed {
+	from {
+		background: rgba(0, 0, 0, 0.5);
+	}
+	to {
+		background: rgba(0, 0, 0, 0);
+	}
 }
