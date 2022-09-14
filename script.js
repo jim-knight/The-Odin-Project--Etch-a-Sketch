@@ -8,8 +8,8 @@ function createGrid(pixelCount) {
 
 	for (let i = 0; i < pixelCount * pixelCount; i++) {
 		let pixel = document.createElement('div');
-		pixel.innerText = i + 1;
+
 		sketchContainer.appendChild(pixel).className = 'pixel';
 	}
 }
-createGrid(16);
+createGrid(32);
