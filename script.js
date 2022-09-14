@@ -1,12 +1,21 @@
-const btnSetGrid = document.getElementById('set-grid');
 const sketchContainer = document.getElementById('sketch-container');
 const pixels = document.querySelectorAll('.pixel');
+const btnSetGrid = document.getElementById('set-grid');
+const btnGrayscale = document.getElementById('grayscale');
+const btnRainbow = document.getElementById('rainbow');
 
 const DEFAULT_PIXEL_COUNT = 16;
+const DEFAULT_COLOR_MODE = 'rainbow';
+const rainbow = ['FF0000', 'FF7F00', 'FFFF00', '00FF00', '0000FF', '4B0082', '9400D3'];
+
 let currentPixelCount = DEFAULT_PIXEL_COUNT;
+let currentColorMode = DEFAULT_COLOR_MODE;
 
 function updateSize(newPixelCount) {
-	if (newPixelCount > 64) {
+	if (!newPixelCount) {
+		currentPixelCount = currentPixelCount;
+		return;
+	} else if (newPixelCount > 64) {
 		return alert(`Your selected value of ${newPixelCount} is too high!`);
 	}
 	currentPixelCount = newPixelCount;
@@ -50,9 +59,16 @@ function clearSketch() {
 
 // Event listeners
 function changePixelColor(e) {
-	e.target.classList.add('pressed');
+	if (currentColorMode === 'rainbow') {
+		// Create random color
+		const randRainbow = rainbow[Math.floor(Math.random() * rainbow.length)];
+		console.log(randRainbow);
+		e.target.classList.add('pressed-rainbow');
+	} else {
+		e.target.style.backgroundColor = `rgba(0,0,0,0.5)`;
+	}
 	setTimeout(() => {
-		e.target.classList.remove('pressed');
+		e.target.classList.remove('pressed-rainbow' || 'pressed-');
 	}, 1000);
 }
 btnSetGrid.addEventListener('click', () => {

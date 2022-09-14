@@ -13,14 +13,13 @@ body {
 	height: 100vh;
 }
 #sketch-container {
-	height: 500px;
-	width: 500px;
-
 	display: grid;
 	grid-gap: 0;
 	grid-template-rows: repeat(var(--grid-rows), 1fr);
 	grid-template-columns: repeat(var(--grid-cols), 1fr);
-	margin-top: 50px;
+	height: 500px;
+	width: 500px;
+	margin: 50px 0;
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 #sketch-container .pixel {
@@ -32,6 +31,23 @@ body {
 #sketch-container .pixel.pressed {
 	animation: pressed 1s linear 1;
 }
+.btn {
+	display: inline-flex;
+	padding: 4px 8px;
+	color: #212121;
+	background: rgba(255, 255, 255, 1);
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	transition: all 0.3s ease;
+}
+.btn:hover {
+	background: rgba(0, 0, 0, 0.05);
+}
+.btn.active {
+	background: #ccc;
+	border-color: #212121;
+}
+
 @keyframes pressed {
 	from {
 		background: rgba(0, 0, 0, 0.5);
