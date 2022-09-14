@@ -1,0 +1,29 @@
+:root {
+	--grid-cols: 1;
+	--grid-rows: 1;
+}
+* {
+	box-sizing: border-box;
+}
+body {
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+#sketch-container {
+	display: grid;
+	grid-gap: 0.1em;
+	grid-template-rows: repeat(var(--grid-rows), 1fr);
+	grid-template-columns: repeat(var(--grid-cols), 1fr);
+	width: 100%;
+	max-width: 1000px;
+}
+#sketch-container .pixel {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1em;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+}
