@@ -8,8 +8,14 @@ function createGrid(pixelCount) {
 
 	for (let i = 0; i < pixelCount * pixelCount; i++) {
 		let pixel = document.createElement('div');
-
 		sketchContainer.appendChild(pixel).className = 'pixel';
+
+		pixel.addEventListener('mouseover', changePixelColor);
 	}
 }
 createGrid(32);
+
+// Event listeners
+function changePixelColor(e) {
+	e.target.classList.add('pressed');
+}
