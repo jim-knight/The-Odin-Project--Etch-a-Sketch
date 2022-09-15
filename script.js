@@ -5,7 +5,7 @@ const btnGrayscale = document.getElementById('grayscale');
 const btnRainbow = document.getElementById('rainbow');
 
 const DEFAULT_PIXEL_COUNT = 16;
-const DEFAULT_COLOR_MODE = 'rainbow';
+const DEFAULT_COLOR_MODE = 'grayscale';
 const rainbow = ['FF0000', 'FF7F00', 'FFFF00', '00FF00', '0000FF', '4B0082', '9400D3'];
 
 let currentPixelCount = DEFAULT_PIXEL_COUNT;
@@ -58,12 +58,13 @@ function clearSketch() {
 }
 
 // Event listeners
+
+// Mark pixel with color where hovered
 function changePixelColor(e) {
 	if (currentColorMode === 'rainbow') {
 		// Create random color
 		const randRainbow = rainbow[Math.floor(Math.random() * rainbow.length)];
-		console.log(randRainbow);
-		e.target.classList.add('pressed-rainbow');
+		e.target.style.backgroundColor = `#${randRainbow}`;
 	} else {
 		e.target.style.backgroundColor = `rgba(0,0,0,0.5)`;
 	}
@@ -74,4 +75,16 @@ function changePixelColor(e) {
 btnSetGrid.addEventListener('click', () => {
 	pixelCount = prompt('Set your new grid size, no higher than 64 please.');
 	changeSize(pixelCount);
+});
+
+// Change color mode on click
+btnGrayscale.addEventListener('click', (e) => {
+	currentColorMode = 'grayscale';
+	e.target.classList.add('active');
+	btnRainbow.classList.remove('active');
+});
+btnRainbow.addEventListener('click', (e) => {
+	currentColorMode = 'rainbow';
+	e.target.classList.add('active');
+	btnGrayscale.classList.remove('active');
 });
